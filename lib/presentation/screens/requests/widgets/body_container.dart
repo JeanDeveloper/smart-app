@@ -12,12 +12,13 @@ class BodyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final size  =  MediaQuery.of(context).size;
+    
     return Column(
       children: [
 
-        const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: TextField(
+        Padding(
+          padding: EdgeInsets.all( size.aspectRatio * 20 ),
+          child: const TextField(
             decoration: InputDecoration(
               hintText: "Buscar",
               hintStyle: TextStyle(color: Colors.white),

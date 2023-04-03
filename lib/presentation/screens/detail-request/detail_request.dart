@@ -32,127 +32,147 @@ class DetailRequestScreen extends StatelessWidget {
           itemBuilder: (context, index) => GestureDetector(
             onTap: () async {
 
-              const url ='http://190.116.178.163/SOLGIS/FOTOS/TRAINING/00838/SGS/SCTR%20SALUD%20Y%20PENSION/115144_1012_20230401.pdf';
+              const url ='http://190.116.178.163/SOLGIS/FOTOS/TRAINING/00838/TRANSPORTES%20Y%20MANIOBRAS%20S.C.R.L/MATRIZ%20IPERC/117059_111049_20230402.pdf';
               final file = await ApiView.loadNetwork(url);
               // ignore: use_build_context_synchronously
               Navigator.push(context, MaterialPageRoute( builder: (context) =>  PDFViewerPage(file: file) ));
 
             },
-            child: ListTile(
-              contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-              title: Row(
-                children: [
 
-                  Expanded(
-                    flex: 4,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Estandar Preventivo del Trabajo", style: Theme.of(context).textTheme.bodySmall, maxLines: 2, overflow: TextOverflow.ellipsis,),
-                      ],
-                    ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7),
+              child: Container(
+                width: size.width,
+                height: size.height *  .1,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 7,  
+                      color: Colors.black.withOpacity(0.1),
+                      offset: const Offset(1, 1),
+                      spreadRadius: 7
+                    )
+                  ]
+                ),
+
+                child: ListTile(
+                  // contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                  title: Row(
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Estandar Preventivo del Trabajo", style: Theme.of(context).textTheme.bodySmall, maxLines: 2, overflow: TextOverflow.ellipsis,),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(
+                        flex:2 ,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("05/03/2023", style: Theme.of(context).textTheme.bodySmall!.copyWith( color: SmartColors.lightGreen)),
+                            Text("10/03/2023", style: Theme.of(context).textTheme.bodySmall!.copyWith( color: SmartColors.red)),
+                          ],
+                        ),
+                      ),
+            
+                    ],
                   ),
-
-                  Expanded(
-                    flex:2 ,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("05/03/2023", style: Theme.of(context).textTheme.bodySmall!.copyWith( color: SmartColors.lightGreen)),
-                        Text("10/03/2023", style: Theme.of(context).textTheme.bodySmall!.copyWith( color: SmartColors.red)),
-                      ],
-                    ),
-                  ),
-
-                ],
-              ),
-              trailing: Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context, 
-                        builder: (context) {
-                          return Container(
-                            height: 500,
-                            child: Center(
-                              child: Column(
-                                children: <Widget>[
-
-                                    //TODO: CANTIDAD DE COMENTARIOS
-                                    Container(
-                                      color: Colors.white,
-                                      width: double.infinity,
-                                      height: 20,
-                                      child: Text("20 Comentarios", textAlign: TextAlign.center,),
-                                    ),
-                                    //TODO: CAJA DE TEXTO
-                                    Container(
-                                      color: Colors.white,
-                                      height: 70,
-                                      child: _inputChat(),
-                                    ),
-                                    const Divider( height: 1 ),
-                                    Flexible(
-                                      child: ListView.builder(
-                                        physics: const BouncingScrollPhysics(),
-                                        itemBuilder: ( _ , i) => Text('$i'),
-                                      )
-                                    ),
-
-                                ],
-                              ),
-                            ),
+                  // subtitle: Text("Arriba las manos"),
+                  trailing: Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context, 
+                            builder: (context) {
+                              return Container(
+                                height: 500,
+                                child: Center(
+                                  child: Column(
+                                    children: <Widget>[
+              
+                                        //TODO: CANTIDAD DE COMENTARIOS
+                                        Container(
+                                          color: Colors.white,
+                                          width: double.infinity,
+                                          height: 20,
+                                          child: Text("20 Comentarios", textAlign: TextAlign.center,),
+                                        ),
+                                        //TODO: CAJA DE TEXTO
+                                        Container(
+                                          color: Colors.white,
+                                          height: 70,
+                                          child: _inputChat(),
+                                        ),
+                                        const Divider( height: 1 ),
+                                        Flexible(
+                                          child: ListView.builder(
+                                            physics: const BouncingScrollPhysics(),
+                                            itemBuilder: ( _ , i) => Text('$i'),
+                                          )
+                                        ),
+              
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
-                      );
-                    },
-                    child: const ButtonIcon(color: Colors.blue , icon: FontAwesomeIcons.eye)
-                  ),
-                  const SizedBox(height: 5 ),
-                  InkWell(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context, 
-                        builder: (context) {
-                          return Container(
-                            height: 500,
-                            child: Center(
-                              child: Column(
-                                children: <Widget>[
-
-                                    //TODO: CANTIDAD DE COMENTARIOS
-                                    Container(
-                                      color: Colors.white,
-                                      width: double.infinity,
-                                      height: 20,
-                                      child: Text("20 Observaciones", textAlign: TextAlign.center,),
-                                    ),
-                                    //TODO: CAJA DE TEXTO
-                                    Container(
-                                      color: Colors.white,
-                                      height: 70,
-                                      child: _inputChat(),
-                                    ),
-                                    const Divider( height: 1 ),
-                                    Flexible(
-                                      child: ListView.builder(
-                                        physics: const BouncingScrollPhysics(),
-                                        itemBuilder: ( _ , i) => Text('$i'),
-                                      )
-                                    ),
-
-                                ],
-                              ),
-                            ),
+                        child: const ButtonIcon(color: Colors.blue , icon: FontAwesomeIcons.eye)
+                      ),
+                      const SizedBox(height: 5 ),
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context, 
+                            builder: (context) {
+                              return Container(
+                                height: 500,
+                                child: Center(
+                                  child: Column(
+                                    children: <Widget>[
+              
+                                        //TODO: CANTIDAD DE COMENTARIOS
+                                        Container(
+                                          color: Colors.white,
+                                          width: double.infinity,
+                                          height: 20,
+                                          child: Text("20 Observaciones", textAlign: TextAlign.center,),
+                                        ),
+                                        //TODO: CAJA DE TEXTO
+                                        Container(
+                                          color: Colors.white,
+                                          height: 70,
+                                          child: _inputChat(),
+                                        ),
+                                        const Divider( height: 1 ),
+                                        Flexible(
+                                          child: ListView.builder(
+                                            physics: const BouncingScrollPhysics(),
+                                            itemBuilder: ( _ , i) => Text('$i'),
+                                          )
+                                        ),
+              
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
-                      );
-                    },
-
-                    child: ButtonIcon(color: SmartColors.pink, icon: FontAwesomeIcons.comment)
+            
+                        child: ButtonIcon(color: SmartColors.pink, icon: FontAwesomeIcons.comment)
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
@@ -167,7 +187,6 @@ class DetailRequestScreen extends StatelessWidget {
       ),
 
     );
-
   }
 
 
