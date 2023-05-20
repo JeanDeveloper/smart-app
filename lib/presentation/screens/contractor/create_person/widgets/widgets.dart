@@ -1,0 +1,1 @@
+export 'package:smart/presentation/screens/contractor/create_person/widgets/image_widget.dart';

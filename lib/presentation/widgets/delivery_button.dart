@@ -3,15 +3,15 @@ import 'package:smart/presentation/theme/theme.dart';
 
 
 class DeliveryButton extends StatelessWidget {
-  final VoidCallback ontap;
-  final String text;
+  final VoidCallback? ontap;
+  final Widget child;
   final EdgeInsets padding;
 
   const DeliveryButton({
     super.key, 
-    required this.ontap, 
-    required this.text, 
-    this.padding = const EdgeInsets.all(14.0)
+    this.ontap, 
+    required this.child,
+    required this.padding,
   });
 
   @override
@@ -21,26 +21,14 @@ class DeliveryButton extends StatelessWidget {
       child: Container(
 
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerRight,
-            end: Alignment.centerLeft,
-            colors: [
-              Color(0xff294466),
-              Color(0xff294466)
-            ],
-          ),
+          color: SmartColors.blue,
           borderRadius: BorderRadius.circular(10)
         ),
 
         child: Padding(
           padding: padding,
-          child: Text(
-            text, 
-            style: const TextStyle( color: Colors.white ),
-              textAlign: TextAlign.center,
-          ),
+          child: child,
         ),
-
       ),
     );
   }

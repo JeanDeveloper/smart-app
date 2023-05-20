@@ -30,24 +30,24 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
       appBar: AppBar(
         title: Text(name),
         actions: pages >= 2
-            ? [
-                Center(child: Text(text, style: Theme.of(context).appBarTheme.titleTextStyle)),
-                IconButton(
-                  icon: const Icon(Icons.chevron_left, size: 32),
-                  onPressed: () {
-                    final page = indexPage == 0 ? pages : indexPage - 1;
-                    controller.setPage(page);
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.chevron_right, size: 32),
-                  onPressed: () {
-                    final page = indexPage == pages - 1 ? 0 : indexPage + 1;
-                    controller.setPage(page);
-                  },
-                ),
-              ]
-            : null,
+          ? [
+              Center(child: Text(text, style: Theme.of(context).appBarTheme.titleTextStyle)),
+              IconButton(
+                icon: const Icon(Icons.chevron_left, size: 32),
+                onPressed: () {
+                  final page = indexPage == 0 ? pages : indexPage - 1;
+                  controller.setPage(page);
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.chevron_right, size: 32),
+                onPressed: () {
+                  final page = indexPage == pages - 1 ? 0 : indexPage + 1;
+                  controller.setPage(page);
+                },
+              ),
+            ]
+          : null,
       ),
       body: PDFView(
         filePath: widget.file.path,
@@ -57,10 +57,8 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
         pageFling: false,
         pageSnap: false,
         onRender: (pages) => setState(() => this.pages = pages!),
-        onViewCreated: (PDFViewController controller) =>
-            setState(() => this.controller = controller),
-        onPageChanged: (indexPage, _) =>
-            setState(() => this.indexPage = indexPage!),
+        onViewCreated: (PDFViewController controller) => setState(() => this.controller = controller),
+        onPageChanged: (indexPage, _) => setState(() => this.indexPage = indexPage!),
       ),
     );
   }

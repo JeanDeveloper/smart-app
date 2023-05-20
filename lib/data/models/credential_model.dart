@@ -1,39 +1,54 @@
-class Credential {
+import 'dart:convert';
+import 'package:smart/domain/entities/credential.dart';
 
-  final String ruc;
-  final String enterprise;
-  final String representative;
-  final String item;
-  final int    userQuantity;
-  final String email;
-  final String numberPhone;
-  final bool isActivate;
+List<CredentialModel> credentialModelFromJson(String str) => List<CredentialModel>.from(json.decode(str).map((x) => CredentialModel.fromJson(x)));
 
-  Credential(
-    this.ruc,
-    this.enterprise,
-    this.representative,
-    this.item,
-    this.userQuantity,
-    this.email,
-    this.numberPhone,
-    this.isActivate
-  );
+String credentialModelToJson(List<CredentialModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+class CredentialModel extends Credential {
+    CredentialModel({
+        required this.codigo,
+        required this.fullname,
+        required this.email,
+        required this.usuario,
+        required this.habilitado,
+        required this.telefono,
+        required this.fechaCreacion,
+    }) : super(codigo: codigo, fullname: fullname, email: email, usuario: usuario, 
+    habilitado: habilitado, telefono: telefono, fechaCreacion: fechaCreacion, );
+
+    @override
+  int codigo;
+    @override
+  String fullname;
+    @override
+  String email;
+    @override
+  String usuario;
+    @override
+  bool habilitado;
+    @override
+  String telefono;
+    @override
+  DateTime fechaCreacion;
+
+    factory CredentialModel.fromJson(Map<String, dynamic> json) => CredentialModel(
+        codigo: json["codigo"],
+        fullname: json["fullname"],
+        email: json["email"],
+        usuario: json["usuario"],
+        habilitado: json["habilitado"],
+        telefono: json["telefono"],
+        fechaCreacion: DateTime.parse(json["fecha_creacion"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "codigo": codigo,
+        "fullname": fullname,
+        "email": email,
+        "usuario": usuario,
+        "habilitado": habilitado,
+        "telefono": telefono,
+        "fecha_creacion": fechaCreacion.toIso8601String(),
+    };
 }
-
-
-final credentials = [
-  Credential("20608159151", "CKYAN FABRICACIONES Y MONTAJES INDUSTRIALES SAC", "DIOS BACA EDDIE GIANCARLO", 
-"INSTALACIÓN DE MAQUINARIA Y EQUIPO INDUSTRIALES", 1, "EDIOS@KYANSAC.COM", "942767851", false),
-  Credential("20600909011", "JOV TELECOMUNICACIONES Y REDES E.I.R.L.	", "JULIO CESAR ORTIZ VILELA	", "TELECOMUNICACIONES",
-      1, "JORTIZ@JOVTELECOMUNICACIONES.COM", "044664821", true),
-  Credential("20608159151", "CKYAN FABRICACIONES Y MONTAJES INDUSTRIALES SAC", "DIOS BACA EDDIE GIANCARLO", 
-"INSTALACIÓN DE MAQUINARIA Y EQUIPO INDUSTRIALES", 1, "EDIOS@KYANSAC.COM", "942767851", false),
-  Credential("20600909011", "JOV TELECOMUNICACIONES Y REDES E.I.R.L.	", "JULIO CESAR ORTIZ VILELA	", "TELECOMUNICACIONES",
-      1, "JORTIZ@JOVTELECOMUNICACIONES.COM", "044664821", false),
-        Credential("20608159151", "CKYAN FABRICACIONES Y MONTAJES INDUSTRIALES SAC", "DIOS BACA EDDIE GIANCARLO", 
-"INSTALACIÓN DE MAQUINARIA Y EQUIPO INDUSTRIALES", 1, "EDIOS@KYANSAC.COM", "942767851", true),
-  Credential("20600909011", "JOV TELECOMUNICACIONES Y REDES E.I.R.L.	", "JULIO CESAR ORTIZ VILELA	", "TELECOMUNICACIONES",
-      1, "JORTIZ@JOVTELECOMUNICACIONES.COM", "044664821", false),
-];

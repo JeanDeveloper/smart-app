@@ -6,10 +6,9 @@ class ButtonState extends StatelessWidget {
   final String textButton;
   final bool isActive;
 
-  const ButtonState({
-    super.key, 
+  const ButtonState({ 
     required this.textButton, 
-    required this.isActive
+    required this.isActive,
   });
 
   @override

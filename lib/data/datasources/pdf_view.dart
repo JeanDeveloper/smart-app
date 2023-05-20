@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 class ApiView{
 
   static Future<File> loadNetwork(String url) async {
-    final response = await http.get( Uri.parse( url ) );
+    final response = await http.get( Uri.parse(url) );
     final bytes    = response.bodyBytes;
     final filename = basename(url);
     final dir      = await getApplicationDocumentsDirectory();
